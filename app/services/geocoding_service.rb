@@ -5,7 +5,11 @@ class GeocodingService
   end
 
   def lat_lon
-    get_json(conn)[:results].first[:geometry][:location]
+    resp = get_json(conn)[:results].first
+    {
+      location: resp[:geometry][:location],
+      address: resp[:formatted_address]
+    }  
   end
 
   private
@@ -20,4 +24,5 @@ class GeocodingService
   def get_json(resp)
     JSON.parse(resp.body, symbolize_names: true)
   end
+
 end
