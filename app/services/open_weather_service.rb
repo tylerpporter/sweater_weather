@@ -1,4 +1,5 @@
 class OpenWeatherService
+  include Servicable
   def initialize(lat, lon, address)
     @lat = lat
     @lon = lon
@@ -22,9 +23,5 @@ class OpenWeatherService
       req.params["units"] = "imperial"
       req.params["appid"] = ENV['WEATHER_KEY']
     end
-  end
-
-  def get_json(resp)
-    JSON.parse(resp.body, symbolize_names: true)
   end
 end

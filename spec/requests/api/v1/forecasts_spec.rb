@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Geocoding Service' do
+describe 'Forecast request' do
   before :each do
     @lat_lon = parse_fixture('spec/fixtures/geocode.json')
     @lat = @lat_lon[:results].first[:geometry][:location][:lat].to_s
@@ -24,7 +24,7 @@ describe 'Geocoding Service' do
 
     city = City.last
     resp = JSON.parse(response.body, symbolize_names: true)
-    
+
     expect(resp[:data][:attributes][:address]).to eq(city.address)
     expect(resp[:data][:attributes][:current]).to eq(@forecast[:current])
     expect(resp[:data][:attributes][:hourly]).to eq(@forecast[:hourly])

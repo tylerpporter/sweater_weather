@@ -1,4 +1,5 @@
 class GeocodingService
+  include Servicable
   def initialize(city, state)
     @city = city
     @state = state
@@ -9,7 +10,7 @@ class GeocodingService
     {
       location: resp[:geometry][:location],
       address: resp[:formatted_address]
-    }  
+    }
   end
 
   private
@@ -20,9 +21,4 @@ class GeocodingService
       req.params["key"] = ENV['GEOCODING_KEY']
     end
   end
-
-  def get_json(resp)
-    JSON.parse(resp.body, symbolize_names: true)
-  end
-
 end
