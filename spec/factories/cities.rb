@@ -5,5 +5,6 @@ FactoryBot.define do
     lat { Faker::Address.latitude }
     lon { Faker::Address.longitude }
     address { Faker::Address.full_address }
+    image {}
   end
 end
