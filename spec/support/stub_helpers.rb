@@ -1,6 +1,6 @@
 module StubHelpers
   def stub_geocoding_service
-    stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=denver%2Bco&key=AIzaSyCmcheMMrRcDGE0E6bZC0Vmg4goy4_70jg")
+    stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json?address=denver%2Bco&key=#{ENV['GEOCODING_KEY']}")
       .with(
       headers: {
      'Accept'=>'*/*',
