@@ -15,4 +15,9 @@ module StubHelpers
       .with(query: {'lat'=> lat, 'lon'=> lng, 'exclude'=>'minutely', 'units'=>'imperial', 'appid'=> ENV['WEATHER_KEY']})
       .to_return(body: File.read('spec/fixtures/open_weather.json'))
   end
+
+  def stub_image_service
+    stub_request(:get, 'https://api.teleport.org/api/urban_areas/slug:denver/images')
+    .to_return(body: File.read('spec/fixtures/denver_image.json'))
+  end
 end
