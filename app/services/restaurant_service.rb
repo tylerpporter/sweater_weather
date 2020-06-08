@@ -8,14 +8,17 @@ class RestaurantService
   end
 
   def restaurant(type)
-    x = conn.get('search') do |req|
+    raw = conn.get('search') do |req|
       req.params[:entity_type] = 'zone'
       req.params[:lat] = @lat
       req.params[:lon] = @lng
       req.params[:cuisines] = find_cuisine(type)
     end
-    y = get_json(x)
-    require "pry"; binding.pry
+    restaurant = get_json(raw)[:restaurants].first[:restaurant]
+    {
+      name: restaurant[:name],
+      address: restaurant[:location][:address]
+    }
   end
 
   private
