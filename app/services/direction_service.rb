@@ -9,7 +9,9 @@ class DirectionService
     raw = get_json(conn)[:routes].first[:legs].first
     {
       end_location: raw[:end_address],
-      travel_time: raw[:duration][:text]
+      travel_time: raw[:duration][:text],
+      lat: raw[:end_location][:lat],
+      lng: raw[:end_location][:lng]
     }
   end
 

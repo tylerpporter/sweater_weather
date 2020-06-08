@@ -1,7 +1,7 @@
 class Api::V1::FoodieController < ApplicationController
   def show
-    location_time = DirectionService.new(origin, destination).directions
-    require "pry"; binding.pry
+    location = DirectionService.new(origin, destination).directions
+    restaurant = RestaurantService.new(type, location).cuisines
   end
 
   private
@@ -12,5 +12,9 @@ class Api::V1::FoodieController < ApplicationController
 
   def destination
     params[:end]
+  end
+
+  def type
+    params[:search]
   end
 end
