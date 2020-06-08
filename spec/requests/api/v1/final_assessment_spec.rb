@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Food and forecast request for a trip ' do
-  before :each do
+  before :all do
     get '/api/v1/foodie?start=denver,co&end=pueblo,co&search=italian'
     @resp = JSON.parse(response.body, symbolize_names: true)
   end
