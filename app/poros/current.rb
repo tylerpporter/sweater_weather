@@ -1,10 +1,11 @@
 class Current
+  attr_reader :temp, :weather  
   def initialize(request, daily)
     @raw = request
     @dt = dt
     @sunrise = sunrise
     @sunset = sunset
-    @temp = temp
+    @temp = tempurature
     @feels_like = feels_like
     @humidity = humidity
     @visibility = visibility
@@ -28,7 +29,7 @@ class Current
     Time.at(@raw[:sunset]).strftime("%I:%M %p")
   end
 
-  def temp
+  def tempurature
     @raw[:temp].to_i
   end
 

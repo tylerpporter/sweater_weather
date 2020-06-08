@@ -42,5 +42,4 @@ class RestaurantService
       f.headers['user-key'] = ENV['RESTAURANT_KEY']
     end
   end
-
 end

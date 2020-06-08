@@ -1,5 +1,5 @@
 class Weather
-  attr_reader :icon, :main
+  attr_reader :icon, :main, :description
   def initialize(raw)
     @main = raw.first[:main]
     @description = raw.first[:description]
