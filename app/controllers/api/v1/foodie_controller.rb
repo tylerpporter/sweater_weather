@@ -11,7 +11,7 @@ class Api::V1::FoodieController < ApplicationController
   end
 
   def restaurant
-    RestaurantService.new(type, location).restaurant
+    Restaurant.new(RestaurantService.new(type, location).restaurant)
   end
 
   def forecast

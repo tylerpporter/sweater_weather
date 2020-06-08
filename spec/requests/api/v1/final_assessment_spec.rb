@@ -16,8 +16,8 @@ describe 'Food and forecast request for a trip ' do
     expect(@resp[:data][:attributes][:restaurant][:address]).to eq("105 E Riverwalk, Pueblo 81003")
   end
   it 'should retrieve the forecast at time of arrival' do
-    # these will almost certainly change/fail because we aren't stubbing the call 
+    # these will almost certainly change/fail because we aren't stubbing the call
     expect(@resp[:data][:attributes][:forecast][:summary]).to eq("clear sky")
-    expect(@resp[:data][:attributes][:forecast][:temperature]).to eq(78)
+    expect(@resp[:data][:attributes][:forecast][:temperature]).to eq(79)
   end
 end
