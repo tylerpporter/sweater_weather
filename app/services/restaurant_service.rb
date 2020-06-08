@@ -7,25 +7,28 @@ class RestaurantService
     @lng = location[:lng]
   end
 
-  def restaurant(type)
-    raw = conn.get('search') do |req|
-      req.params[:entity_type] = 'zone'
-      req.params[:lat] = @lat
-      req.params[:lon] = @lng
-      req.params[:cuisines] = find_cuisine(type)
-    end
-    restaurant = get_json(raw)[:restaurants].first[:restaurant]
+  def restaurant
     {
-      name: restaurant[:name],
-      address: restaurant[:location][:address]
+      name: restaurant_raw[:name],
+      address: restaurant_raw[:location][:address]
     }
   end
 
   private
 
-  def find_cuisine(type)
+  def restaurant_raw
+    @raw ||= conn.get('search') do |req|
+      req.params[:entity_type] = 'zone'
+      req.params[:lat] = @lat
+      req.params[:lon] = @lng
+      req.params[:cuisines] = find_cuisine
+    end
+    get_json(@raw)[:restaurants].first[:restaurant]
+  end
+
+  def find_cuisine
     @cuisines ||= cuisine_hash
-    cuisine = @cuisines.select {|c| c[:cuisine][:cuisine_name].downcase == type}
+    cuisine = @cuisines.select {|c| c[:cuisine][:cuisine_name].downcase == @type}
     cuisine.first[:cuisine][:cuisine_id]
   end
 
