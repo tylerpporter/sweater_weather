@@ -2,14 +2,30 @@ class Api::V1::FoodieController < ApplicationController
   def show
     location = DirectionService.new(origin, destination).directions
     restaurant = RestaurantService.new(type, location).restaurant(type)
-    destination_city = City.create(city_params)
-    forecast = Forecast.new(forecast_request(destination_city))
-    temp = forecast.current.temp
-    summary = forecast.current.weather.description 
-    require "pry"; binding.pry
+    # destination_city = City.create(city_params)
+    # forecast = Forecast.new(forecast_request(destination_city))
+    # temp = forecast.current.temp
+    # summary = forecast.current.weather.description
+    trip = Foodie.new(location, restaurant, forecast)
+    render json: FoodieSerializer.new(trip)
   end
 
   private
+
+  def forecast
+    {
+      summary: full_forecast.current.weather.description,
+      temperature: full_forecast.current.temp
+    }
+  end
+
+  def full_forecast
+    @forecast ||= Forecast.new(forecast_request(create_city))
+  end
+
+  def create_city
+    City.create(city_params)
+  end
 
   def origin
     params[:start]

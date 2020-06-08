@@ -6,6 +6,7 @@ describe 'Food and forecast request for a trip ' do
     @resp = JSON.parse(response.body, symbolize_names: true)
   end
   it 'should retrieve the end city' do
+    require "pry"; binding.pry
     expect(@resp[:data][:attributes][:end_location]).to eq('pueblo,co')
   end
   xit 'should retrieve the estimated travel time' do
