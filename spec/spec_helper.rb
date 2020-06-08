@@ -1,4 +1,4 @@
-require 'webmock/rspec'
+# require 'webmock/rspec'
 require './spec/support/file_helpers'
 require './spec/support/stub_helpers.rb'
 
