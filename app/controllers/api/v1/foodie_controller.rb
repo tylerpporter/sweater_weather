@@ -1,7 +1,7 @@
 class Api::V1::FoodieController < ApplicationController
   def show
     location = DirectionService.new(origin, destination).directions
-    restaurant = RestaurantService.new(type, location).cuisines
+    restaurant = RestaurantService.new(type, location).restaurant(type)
   end
 
   private
