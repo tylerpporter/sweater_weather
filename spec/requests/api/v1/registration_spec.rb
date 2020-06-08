@@ -33,7 +33,7 @@ describe 'Registration response' do
     expect(resp[:body][:message]).to eq('Passwords must match')
   end
   it 'should return a status 400 if unsuccessful - email exists' do
-    create(:user, email: "whatever@example.com", password: 'dog', password_confirmation: 'dog')
+    create(:user, email: "whatever@example.com")
     new_user = {
       "email": "whatever@example.com",
       "password": "password",
