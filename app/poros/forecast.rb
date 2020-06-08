@@ -1,8 +1,6 @@
 class Forecast
-  attr_reader :id
   def initialize(request)
     @request = request
-    @id = 1
   end
 
   def address
