@@ -1,13 +1,13 @@
 class Api::V1::FoodieController < ApplicationController
   def show
-    trip = Foodie.new(location, restaurant, forecast)
-    render json: FoodieSerializer.new(trip)
+    foodie = Foodie.new(location, restaurant, forecast)
+    render json: FoodieSerializer.new(foodie)
   end
 
   private
 
   def location
-    DirectionService.new(origin, destination).directions
+    Trip.new(DirectionService.new(origin, destination).directions)
   end
 
   def restaurant

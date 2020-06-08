@@ -3,8 +3,8 @@ class RestaurantService
 
   def initialize(type, location)
     @type = type
-    @lat = location[:lat]
-    @lng = location[:lng]
+    @lat = location.lat
+    @lng = location.lng
   end
 
   def restaurant
