@@ -12,6 +12,7 @@ gem 'fast_jsonapi'
 gem 'jbuilder'
 gem 'faraday'
 gem 'figaro'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'rspec-rails'
