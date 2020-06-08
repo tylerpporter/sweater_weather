@@ -6,8 +6,11 @@ class DirectionService
   end
 
   def directions
-    x = get_json(conn)
-    require "pry"; binding.pry
+    raw = get_json(conn)[:routes].first[:legs].first
+    {
+      end_location: raw[:end_address],
+      travel_time: raw[:duration][:text]
+    }
   end
 
   private
