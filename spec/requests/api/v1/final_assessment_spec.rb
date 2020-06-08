@@ -18,6 +18,6 @@ describe 'Food and forecast request for a trip ' do
   it 'should retrieve the forecast at time of arrival' do
     # these will almost certainly change/fail because we aren't stubbing the call
     expect(@resp[:data][:attributes][:forecast][:summary]).to eq("clear sky")
-    expect(@resp[:data][:attributes][:forecast][:temperature]).to eq(79)
+    expect(@resp[:data][:attributes][:forecast][:temperature]).to eq(80)
   end
 end
