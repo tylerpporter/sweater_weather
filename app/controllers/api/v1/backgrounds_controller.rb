@@ -11,10 +11,6 @@ class Api::V1::BackgroundsController < ApplicationController
     params[:location].split(',').first
   end
 
-  def state
-    params[:location].split(',').last
-  end
-
   def update_city(image)
     city = City.find_by(name: city_name)
     city.update(image: image) unless city.nil?
