@@ -45,7 +45,7 @@ class Current
   end
 
   def visibility
-    "#{(@raw[:visibility] * 0.00062137).to_i} miles"
+    "#{(@raw[:visibility] * 0.00062137).to_i} miles" if @raw[:visibility]
   end
 
   def uv_index
