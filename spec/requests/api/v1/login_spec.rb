@@ -14,7 +14,7 @@ describe 'Login response' do
       "email": "whatever@example.com",
       "password": "password"
     }
-    post '/api/v1/sessions', params: credentials
+    post '/api/v1/sessions', params: credentials, as: :json
 
     expect(status).to eq(200)
     expect(id).to eq(@user.id)
@@ -26,7 +26,7 @@ describe 'Login response' do
       "email": "whatever@example.com",
       "password": "password22"
     }
-    post '/api/v1/sessions', params: credentials
+    post '/api/v1/sessions', params: credentials, as: :json 
 
     expect(status).to eq(400)
     expect(message).to eq('Bad credentials')
