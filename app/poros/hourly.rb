@@ -1,4 +1,5 @@
 class Hourly
+  attr_reader :weather, :temp
   def self.forecast(request)
     request.inject([]) do |arr, hourly|
       arr << new(hourly)
@@ -9,8 +10,13 @@ class Hourly
   def initialize(request)
     @raw = request
     @dt = dt
-    @temp = temp
+    @temp = temperature
     @icon = icon
+    @weather = Weather.new(@raw[:weather])
+  end
+
+  def dt_unix
+    @raw[:dt]
   end
 
   private
@@ -19,7 +25,7 @@ class Hourly
     Time.at(@raw[:dt]).strftime("%I:%M %p")
   end
 
-  def temp
+  def temperature
     @raw[:temp].to_i
   end
 

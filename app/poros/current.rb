@@ -14,6 +14,10 @@ class Current
     @low = daily.low
   end
 
+  def dt_unix
+    @raw[:dt]
+  end
+
   private
 
   def dt
