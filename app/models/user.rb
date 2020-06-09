@@ -14,8 +14,8 @@ class User < ApplicationRecord
   end
 
   def four_o_four
-    return 'Passwords must match' if pass_mismatch?
-    return 'Email already exists' if email_exists?
+    return pass_mismatch if pass_mismatch?
+    return email_exists if email_exists?
     missing_fields if missing_fields?
   end
 
@@ -25,8 +25,16 @@ class User < ApplicationRecord
     errors.messages[:password_confirmation] == ["doesn't match Password"]
   end
 
+  def pass_mismatch
+    errors.full_messages_for(:password_confirmation).to_sentence
+  end
+
   def email_exists?
-    errors.messages[:email] == ['has already been taken']
+    errors.messages[:email] == ["has already been taken"]
+  end
+
+  def email_exists
+    errors.full_messages_for(:email).to_sentence
   end
 
   def missing_fields?
