@@ -7,7 +7,7 @@ describe 'Registration response' do
       "password": "password",
       "password_confirmation": "password"
     }
-    post '/api/v1/users', params: new_user
+    post '/api/v1/users', params: new_user, as: :json
     user = User.last
 
     expect(status).to eq(201)
@@ -23,7 +23,7 @@ describe 'Registration response' do
       "password": "password",
       "password_confirmation": "password2"
     }
-    post '/api/v1/users', params: new_user
+    post '/api/v1/users', params: new_user, as: :json
 
     expect(User.count).to eq(0)
     expect(status).to eq(400)
@@ -36,7 +36,7 @@ describe 'Registration response' do
       "password": "password",
       "password_confirmation": "password"
     }
-    post '/api/v1/users', params: new_user
+    post '/api/v1/users', params: new_user, as: :json
 
     expect(User.count).to eq(1)
     expect(status).to eq(400)
@@ -48,7 +48,7 @@ describe 'Registration response' do
       "password": "password",
       "password_confirmation": "password"
     }
-    post '/api/v1/users', params: new_user
+    post '/api/v1/users', params: new_user, as: :json
 
     expect(User.count).to eq(0)
     expect(status).to eq(400)
