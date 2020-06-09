@@ -27,7 +27,7 @@ describe 'Registration response' do
 
     expect(User.count).to eq(0)
     expect(status).to eq(400)
-    expect(message).to eq('Passwords must match')
+    expect(message).to eq("Password confirmation doesn't match Password")
   end
   it 'should return a status 400 if unsuccessful - email exists' do
     create(:user, email: "whatever@example.com")
@@ -40,7 +40,7 @@ describe 'Registration response' do
 
     expect(User.count).to eq(1)
     expect(status).to eq(400)
-    expect(message).to eq('Email already exists')
+    expect(message).to eq("Email has already been taken")
   end
   it 'should return a status 400 if unsuccessful - missing field' do
     new_user = {
