@@ -1,6 +1,6 @@
 class Current
-  def initialize(request, daily)
-    @raw = request
+  def initialize(resp, daily)
+    @raw = resp
     @daily = daily
   end
 

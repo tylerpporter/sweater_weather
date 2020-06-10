@@ -1,13 +1,13 @@
 class Daily
-  def self.forecast(request)
-    request.inject([]) do |arr, daily|
+  def self.forecast(resp)
+    resp.inject([]) do |arr, daily|
       arr << new(daily)
       arr
     end
   end
 
-  def initialize(request)
-    @raw = request
+  def initialize(resp)
+    @raw = resp
   end
 
   def dt

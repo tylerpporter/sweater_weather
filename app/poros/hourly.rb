@@ -1,13 +1,13 @@
 class Hourly
-  def self.forecast(request)
-    request.inject([]) do |arr, hourly|
+  def self.forecast(resp)
+    resp.inject([]) do |arr, hourly|
       arr << new(hourly)
       arr
     end
   end
 
-  def initialize(request)
-    @raw = request
+  def initialize(resp)
+    @raw = resp
   end
 
   def dt_unix

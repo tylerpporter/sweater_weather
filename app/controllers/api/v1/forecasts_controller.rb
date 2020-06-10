@@ -1,7 +1,7 @@
 class Api::V1::ForecastsController < ApplicationController
   def show
     city = find_or_create
-    @forecast = Forecast.new(forecast_request(city))
+    @forecast = Forecast.new(forecast_response(city))
     render '/forecasts/show.json'
   end
 
@@ -20,7 +20,7 @@ class Api::V1::ForecastsController < ApplicationController
     city.nil? ? city = City.create(city_params) : city
   end
 
-  def forecast_request(city)
+  def forecast_response(city)
     OpenWeatherService.new(city.lat, city.lon, city.address).forecast
   end
 

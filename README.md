@@ -16,6 +16,12 @@ N/A Development only
 - Run `bundle install`
 - Run `rails s` to start up the local server
 
+## Required API Keys
+Add each of these to your `application.yml`
+- [GEOCODING_KEY](https://developers.google.com/maps/documentation/geocoding/get-api-key)
+- [WEATHER_KEY](https://openweathermap.org/appid)
+- [DIRECTIONS_KEY](https://developers.google.com/maps/documentation/directions/start)
+
 ### Example Requests
 * Weather for a city:
 ```
