@@ -1,24 +1,24 @@
 class Current
   def initialize(request, daily)
     @raw = request
-    @dt = dt
-    @sunrise = sunrise
-    @sunset = sunset
-    @temp = temp
-    @feels_like = feels_like
-    @humidity = humidity
-    @visibility = visibility
-    @uv_index = uv_index
-    @weather = Weather.new(@raw[:weather])
-    @high = daily.high
-    @low = daily.low
+    @daily = daily
+  end
+
+  def weather
+    Weather.new(@raw[:weather])
+  end
+
+  def high
+    @daily.high
+  end
+
+  def low
+    @daily.low
   end
 
   def dt_unix
     @raw[:dt]
   end
-
-  private
 
   def dt
     Time.at(@raw[:dt]).strftime("%I:%M %p, %B %d")
