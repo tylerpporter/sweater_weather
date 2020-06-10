@@ -1,4 +1,16 @@
 module ResponseHelpers
+  def daily
+    attributes[:daily]
+  end
+
+  def hourly
+    attributes[:hourly]
+  end
+
+  def current
+    attributes[:current]
+  end
+
   def id
     data[:id]
   end

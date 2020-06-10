@@ -1,8 +1,8 @@
 class Api::V1::ForecastsController < ApplicationController
   def show
     city = find_or_create
-    forecast = Forecast.new(forecast_request(city))
-    render json: ForecastSerializer.new(forecast)
+    @forecast = Forecast.new(forecast_request(city))
+    render '/forecasts/show.json'
   end
 
   private
