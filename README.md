@@ -1,7 +1,7 @@
 # Rails Engine
 
 API for [Sweater Weather](https://backend.turing.io/module3/projects/sweater_weather/requirements)
-* responses are JSON API 1.0 Compliant
+* responses are JSON API 1.0 compliant
 
 ## Deployment
 
